@@ -3,17 +3,15 @@ async function main() {
 
   console.log("Deploying contracts with the account:", deployer.address);
 
-  const initialOwner = deployer.address
-
   // Deploy TestToken
   const TestToken = await ethers.getContractFactory("TestToken");
-  const testToken = await TestToken.deploy(initialOwner);
+  const testToken = await TestToken.deploy();
   await testToken.deployed();
   console.log("TestToken deployed to:", testToken.address);
 
-  // Deploy TestUSDCToken
-  const TestUSDCToken = await ethers.getContractFactory("TestUSDCToken");
-  const testUSDC = await TestUSDCToken.deploy(initialOwner);
+  // Deploy TestUSDC
+  const TestUSDCToken = await ethers.getContractFactory("TestUSDC");
+  const testUSDC = await TestUSDCToken.deploy();
   await testUSDC.deployed();
   console.log("TestUSDCToken deployed to:", testUSDC.address);
 
