@@ -3,10 +3,10 @@ require('@nomiclabs/hardhat-etherscan');
 require('dotenv').config();
 
 module.exports = {
-  solidity: "0.8.0",
+  solidity: "0.8.20",
   networks: {
-    ropsten: {
-      url: process.env.ROPSTEN_URL,
+    sepolia: {
+      url: process.env.SEPOLIA_URL,
       accounts: [process.env.PRIVATE_KEY]
     },
   },
