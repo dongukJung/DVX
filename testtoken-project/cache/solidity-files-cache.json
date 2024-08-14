@@ -84,8 +84,8 @@
       ]
     },
     "C:\\Windows\\System32\\Workspace\\DVX\\testtoken-project\\contracts\\TestUSDCToken.sol": {
-      "lastModificationDate": 1723599534567,
-      "contentHash": "7f4f51d246f6aaf07d48a3643df03ba5",
+      "lastModificationDate": 1723646524059,
+      "contentHash": "f39212c5a1b748e9d12703bb7cbd9ab2",
       "sourceName": "contracts/TestUSDCToken.sol",
       "solcConfig": {
         "version": "0.8.20",

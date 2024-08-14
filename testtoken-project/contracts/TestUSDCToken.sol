@@ -10,7 +10,7 @@ contract TestUSDC is ERC20, ERC20Permit, Ownable {
 	// No inital minting since it'd be minted for reward only
     }
 
-    function mint(address to, uint256 amount) public onlyOwner {
+    function mint(address to, uint256 amount) public {
         _mint(to, amount);
     }
 
