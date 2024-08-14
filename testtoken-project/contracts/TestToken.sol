@@ -13,8 +13,8 @@ contract TestToken is ERC20, ERC20Permit, Ownable {
 
     // No mint function to block additional minting after construct.
 
-    function burn(uint256 amount) public {
-        _burn(msg.sender, amount);
+    function burn(address from, uint256 amount) public {
+        _burn(from, amount);
     }
 }
 

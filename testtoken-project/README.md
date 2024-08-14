@@ -36,7 +36,8 @@ Configure your environment variables in a .env file:
 
 ```
 ROPSTEN_URL=<Your_Infura_Or_Alchemy_URL>
-PRIVATE_KEY=<Your_Private_Key>
+PRIVATE_KEY1=<Your_Private_Key>
+PRIVATE_KEY2=<Your_Private_Key>
 ETHERSCAN_API_KEY=<Your_Etherscan_API_Key>
 ```
 

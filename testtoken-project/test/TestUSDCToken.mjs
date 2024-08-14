@@ -1,31 +1,37 @@
 import { expect } from "chai";
 
-describe("TestToken Contract", function () {
-  let TestToken, testToken, owner, user;
+describe("TestUSDCToken Contract", function () {
+  let TestUSDC, testToken, owner, user;
 
   beforeEach(async function () {
     [owner, user] = await ethers.getSigners();
-    TestToken = await ethers.getContractFactory("TestToken");
-    testToken = await TestToken.deploy();
+    TestUSDC = await ethers.getContractFactory("TestUSDC");
+    testToken = await TestUSDC.deploy();
     await testToken.deployed();
   });
 
-  it("Should deploy with initial supply", async function () {
+  it("Should deploy without initial supply", async function () {
     const ownerBalance = await testToken.balanceOf(owner.address);
     const totalSupply = await testToken.totalSupply();
-    expect(ownerBalance.eq(ethers.BigNumber.from("1000000000"))).to.be.true;
-    expect(totalSupply.eq(ethers.BigNumber.from("1000000000"))).to.be.true;
+    expect(ownerBalance.eq(ethers.BigNumber.from("0"))).to.be.true;
+    expect(totalSupply.eq(ethers.BigNumber.from("0"))).to.be.true;
   });
 
-  it("Should burn tokens", async function () {
+  it("Should mint and burn tokens", async function () {
+    const mintAmount = ethers.BigNumber.from("1000");
+    const mintTx = await testToken.mint(user.address, mintAmount);
+    await mintTx.wait();
+    const userBalance = await testToken.balanceOf(user.address);
+    expect(userBalance.eq(mintAmount)).to.be.true;
+	  
     const burnAmount = ethers.BigNumber.from("100");
-    const initialBalance = await testToken.balanceOf(owner.address);
-    const tx = await testToken.burn(owner.address, burnAmount);
-    await tx.wait();
-    const finalBalance = await testToken.balanceOf(owner.address);
-    const expectedBalance = initialBalance.sub(burnAmount);
+    const burnTx = await testToken.burn(user.address, burnAmount);
+    await burnTx.wait();
+    const finalBalance = await testToken.balanceOf(user.address);
+    const expectedBalance = userBalance.sub(burnAmount);
     expect(finalBalance.eq(expectedBalance)).to.be.true;
   });
+
 
   it("Should permit token allowance via signature", async function () {
     const amount = ethers.BigNumber.from("1000");
@@ -65,8 +71,8 @@ describe("TestToken Contract", function () {
     const { v, r, s } = ethers.utils.splitSignature(signature);
 
     // 서명 사용하여 허가
-    const tx = await testToken.permit(owner.address, user.address, amount, deadline, v, r, s);
-    await tx.wait(); // This part is need to reflect permit on blockchain net?
+    const permitTx = await testToken.permit(owner.address, user.address, amount, deadline, v, r, s);
+    await permitTx.wait();
 
     // 허가된 토큰 수량 확인
     const allowance = await testToken.allowance(owner.address, user.address);

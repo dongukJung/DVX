@@ -44,8 +44,8 @@
       ]
     },
     "C:\\Windows\\System32\\Workspace\\DVX\\testtoken-project\\contracts\\TestToken.sol": {
-      "lastModificationDate": 1723597310942,
-      "contentHash": "324e6b0424f068cdc4ac3bd8d86be650",
+      "lastModificationDate": 1723599649531,
+      "contentHash": "4b276a05237787cf0db61e1fa1970532",
       "sourceName": "contracts/TestToken.sol",
       "solcConfig": {
         "version": "0.8.20",
@@ -84,8 +84,8 @@
       ]
     },
     "C:\\Windows\\System32\\Workspace\\DVX\\testtoken-project\\contracts\\TestUSDCToken.sol": {
-      "lastModificationDate": 1723191011859,
-      "contentHash": "6972acc9ce508eff752370833c3b0b24",
+      "lastModificationDate": 1723599534567,
+      "contentHash": "7f4f51d246f6aaf07d48a3643df03ba5",
       "sourceName": "contracts/TestUSDCToken.sol",
       "solcConfig": {
         "version": "0.8.20",
