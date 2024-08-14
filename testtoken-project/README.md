@@ -51,3 +51,9 @@ To interact with the deployed contracts on console, run
 ```
 npx hardhat console --network baobab
 ```
+
+
+To run tests, run
+```
+npx hardhat test --network baobab
+```
